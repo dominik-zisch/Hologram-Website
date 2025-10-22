@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Image</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+        }
+        #display-img {
+            display: block;
+            margin: auto;
+            max-width: 100vw;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <img id="display-img" src="" alt="Selected Image">
+    <script>
+        let currentImage = null;
+
+        async function fetchImage() {
+            const response = await fetch("/current_image");
+            const data = await response.json();
+
+            if (data.filename && data.filename !== currentImage) {
+                currentImage = data.filename;
+                document.getElementById("display-img").src = currentImage;
+            }
+        }
+
+        setInterval(fetchImage, 100);
+        fetchImage(); // initial load
+    </script>
+</body>
+</html>

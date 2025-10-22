@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Image</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Select an Image</h1>
+    <div class="image-grid">
+        {% for image in images %}
+        <form method="POST">
+            <input type="hidden" name="image" value="{{ image }}">
+            <button type="submit" class="image-button">
+                <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="{{ image }}">
+            </button>
+        </form>
+        {% endfor %}
+    </div>
+    {% if selected %}
+    <p>Selected: {{ selected }}</p>
+    {% endif %}
+</body>
+</html>

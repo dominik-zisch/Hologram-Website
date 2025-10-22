@@ -1,0 +1,37 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.image-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.image-button img {
+    max-width: 150px;
+    max-height: 150px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+.image-button:hover img {
+    transform: scale(1.05);
+    border-color: #555;
+}
