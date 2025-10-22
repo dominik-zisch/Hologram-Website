@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Select Image</title>
+    <title>Select Media</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>Select an Image</h1>
+    <h1>Select an Image or Video</h1>
     <div class="image-grid">
-        {% for image in images %}
+        {% for item in media %}
         <form method="POST">
-            <input type="hidden" name="image" value="{{ image }}">
+            <input type="hidden" name="media" value="{{ item.filename }}">
             <button type="submit" class="image-button">
-                <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="{{ image }}">
+                {% if item.type == 'image' %}
+                <img src="{{ url_for('static', filename='images/' ~ item.filename) }}" alt="{{ item.filename }}">
+                {% elif item.type == 'video' %}
+                <video muted preload="metadata">
+                    <source src="{{ url_for('static', filename='images/' ~ item.filename) }}" type="video/mp4">
+                    Your browser does not support videos.
+                </video>
+                {% endif %}
             </button>
         </form>
         {% endfor %}

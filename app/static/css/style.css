@@ -35,3 +35,16 @@ h1 {
     transform: scale(1.05);
     border-color: #555;
 }
+
+.image-button video {
+    max-width: 150px;
+    max-height: 150px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.image-button:hover video {
+    transform: scale(1.05);
+    border-color: #555;
+}
